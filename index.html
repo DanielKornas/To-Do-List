@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>To do List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/style.nested.css">
+
+</head>
+
+<body>
+    <select id="daysList">
+      <option id="selectHide" >Wybierz dzień...</option>
+      <option value="monday" >Monday</option>
+      <option value="tuesday">Tuesday</option>
+      <option value="wednesday">Wednesday</option>
+      <option value="thursday">Thursday</option>
+      <option value="friday">Friday</option>
+      <option value="saturday">Saturday</option>
+      <option value="sunday">Sunday</option>
+    </select>
+    <div id="infoBox">
+    <ul id="taskList">
+    </ul>
+
+
+        <section id="newTask">
+            <input id="taskName" placeholder="Place your task here"><br>
+            <input id="taskDesc" placeholder="Descr"><br>
+
+        </section>
+        <p id="tasksTofinish">Tasks to finish: <span id="counter">0</span></p>
+        <button id="addTaskButton">Add task</button>
+        <button id="removeAlltasksButton">Remove all tasks</button>
+        <button id="saveAll">Save changes</button>
+    </div>
+
+    <script src=" js/app.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAPZVwCX68mmPBIiZ3T2m85ozcPingeTko",
+            authDomain: "to-do-list-a1097.firebaseapp.com",
+            databaseURL: "https://to-do-list-a1097.firebaseio.com",
+            storageBucket: "to-do-list-a1097.appspot.com",
+            messagingSenderId: "366008189158"
+        };
+        firebase.initializeApp(config);
+    </script>
+</body>
+
+</html>
