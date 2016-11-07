@@ -1,0 +1,11 @@
+.color {
+  color: red; }
+
+#daysList {
+  list-style-type: none; }
+  #daysList li {
+    display: none; }
+  #daysList li.showDay {
+    display: inline; }
+
+/*# sourceMappingURL=style.nested.css.map */

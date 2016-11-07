@@ -1,0 +1,14 @@
+.color{
+    color: red ;
+}
+#daysList{
+    list-style-type:none;
+    li{
+        display:none;
+
+    }
+    li.showDay{
+        display:inline;
+    }
+
+}
