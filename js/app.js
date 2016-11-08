@@ -1,12 +1,13 @@
 var data = {};
 $(function() {
     var taskName = $('#taskName');
-    var taskNameval, taskDescval, selectedDay, taskListallLi, itemId;
+    var taskNameval, taskDescval, selectedDay, itemId;
     var taskDesc = $('#taskDesc');
     var mainContentBox = $('#mainContentBox')
     var printTasks = mainContentBox.find('#printTasks');
     var addTaskButton = $('#addTaskButton');
     var taskList = $('#taskList');
+    var editButton = $('.editButton');
     var daysList = $('#daysList');
     var selectHide = daysList.find('#selectHide');
     var removeAlltasksButton = $('#removeAlltasksButton');
@@ -33,10 +34,7 @@ $(function() {
             .set(data);
     }
 
-    function deleteTask() {
-
-        taskListallLi = taskList.find('.delete');
-        console.log(taskListallLi)
+    function deleteEdittask() {
         taskList.on("click", ".delete", function() { // event na rodzicu i znalezienie po selektorze - bo sa elementy, ktorych nie ma w DOM
 
             itemId = $(this).parent().index(); // szukam, w ktorym li znajduje sie button, w ktory kliknieto
@@ -45,13 +43,19 @@ $(function() {
             counter.html(taskList.children().length); // odpowiednie ustawienie licznika
 
         })
-
+        // event na edytowanie zadania
+        taskList.on("click", ".editButton", function(){
+                console.log($(this).parent().find('h3').text());
+            itemId = $(this).parent().index();
+            console.log(data[selectedDay][itemId]['name']);
+            // ustawiam wartosc w bazie danych na aktualna wartosc tytulu i opisu - wartosc zmieniona po kliknieciu edytuj
+            data[selectedDay][itemId]['name'] = $(this).parent().find('h3').text();
+            data[selectedDay][itemId]['desc'] = $(this).parent().find('h4').text();
+        });
 
     }
 
-
     loadData();
-    // counter.html("0");
 
     daysList.change(function() { // event change - wybieranie dni z listy
         mainContentBox.show();
@@ -68,15 +72,13 @@ $(function() {
         }
         for (var i = 0; i < singleDay.length; i++) {
             // singleday[i] - numer zadania w danym dniu
-            console.log(singleDay.length)
             if (singleDay[i] !== undefined) {
 
-                taskList.append($('<li data-id=' + i + ' class="list-group-item clearfix"><h3>' + singleDay[i].name + '</h3><h4>' + singleDay[i].desc + '</h4><button type="button" class="btn btn-default btn-sm pull-right" title="Usuń to zadanie"><span class="glyphicon glyphicon-minus"></span> Usuń</button></li>')).hide().slideDown(300); // li zawiera informacje!!
-
+                taskList.append($('<li data-id=' + i + ' class="list-group-item clearfix"><h3 contenteditable="true">' + singleDay[i].name + '</h3><h4 contenteditable="true">' + singleDay[i].desc + '</h4><button class="editButton btn btn-default" title="Zaktualizuj opis zadania">zaktualizuj</button><button type="button" class="btn btn-default btn-sm pull-right delete" title="Usuń to zadanie"><span class="glyphicon glyphicon-minus"></span> Usuń</button></li>')).hide().slideDown(300); // li zawiera informacje!!
             }
         }
-        counter.html(taskList.children().length);
 
+        counter.html(taskList.children().length); // pokazanie odpowiedniej wartosci licznika
         printTasks.on("click", function(){
             window.print();
         })
@@ -88,19 +90,16 @@ $(function() {
 
         event.preventDefault();
         var newTask = $('<li class="list-group-item clearfix">'); // nowy element li
-        // przykladowy warunek
         if (taskName.val().length > 5 && taskName.val().length < 100) {
             taskNameval = taskName.val();
             taskDescval = taskDesc.val();
 
-            newTask.html('<h3>' + taskNameval + '</h3><h4>' + taskDescval + '</h4><button type="button" class="btn btn-default btn-sm pull-right" title="Usuń to zadanie"><span class="glyphicon glyphicon-minus"></span> Usuń</button>');
+            newTask.html('<h3 contenteditable="true">' + taskNameval + '</h3><h4 contenteditable="true">' + taskDescval + '</h4><button class="btn btn-default editButton" title="Zaktualizuj opis zadania">zaktualizuj</button><button type="button" class="btn btn-default btn-sm pull-right delete" title="Usuń to zadanie"><span class="glyphicon glyphicon-minus"></span> Usuń</button>');
             taskList.append(newTask); // dodajemy li do ul - kazde kolejne li bedzie ponizej
 
             taskName.val(""); // resetowanie inputa po dodaniu - wyczyszczenie jego tresci
             taskDesc.val("");
-
             counter.html(taskList.children().length);
-
 
             if (data[selectedDay] === undefined) { // po usunieciu ostatniego zadania usuwa sie tez caly dzien. dodaje pusta [] zeby moglo dalej dzialac
                 data[selectedDay] = [];
@@ -111,7 +110,7 @@ $(function() {
             });
 
         } else {
-            alert("Zadanie może być dodane tylko gdy jego treść ma więcej niż pięć, a mniej niż sto znaków.");
+            alert("Tytuł zadania ma mieć minimum 6 znakow");
         }
         // saveAll.on("click", function() {
         //     console.log("zapisuje")
@@ -128,8 +127,7 @@ $(function() {
         saveData();
     })
 
-    deleteTask();
-
+    deleteEdittask();
     removeAlltasksButton.on("click", function(fourth) { // klikam w usun wszystko i...
         console.log("dziala")
         fourth.preventDefault();

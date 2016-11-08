@@ -1,3 +1,4 @@
 # To-Do-List
-IN PROGRESS
-To do list - JS, jQuery, Bootstrap, HTML5, SASS.
+Lista zadań do wykonania - JS, jQuery, Bootstrap, HTML5, CSS3, Firebase.
+
+Demo: https://danielkornas.github.io/To-Do-List/
