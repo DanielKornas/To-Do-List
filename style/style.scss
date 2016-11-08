@@ -1,14 +1,18 @@
-.color{
-    color: red ;
+
+h1{
+    color:red;
 }
+@media print
+{
+body * { visibility: hidden; }
+#taskList * { visibility: visible; }
+
+}
+
+
 #daysList{
-    list-style-type:none;
-    li{
-        display:none;
-
-    }
-    li.showDay{
-        display:inline;
-    }
-
+    text-align-last: center; /* to override text-align: left; */
+}
+div.startView{
+    margin-top:25%;
 }

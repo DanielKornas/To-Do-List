@@ -3,38 +3,92 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>To do List</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style/style.nested.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+
 
 </head>
 
 <body>
-    <select id="daysList">
-      <option id="selectHide" >Wybierz dzień...</option>
-      <option value="monday" >Monday</option>
-      <option value="tuesday">Tuesday</option>
-      <option value="wednesday">Wednesday</option>
-      <option value="thursday">Thursday</option>
-      <option value="friday">Friday</option>
-      <option value="saturday">Saturday</option>
-      <option value="sunday">Sunday</option>
-    </select>
-    <div id="infoBox">
-    <ul id="taskList">
-    </ul>
+    <div class="container">
+        <div class="row">
+            <a href="#"><h1>to <span class="color-1">do</span> <span class="color-2">list</span></h1></a>
+        </div>
+
+        <div class="row startView ">
+            <div class="col-md-6 col-md-offset-3">
+                <select class="form-control" id="daysList">
+      <option id="selectHide" selected >Wybierz dzień...</option>
+      <option value="monday" >Poniedziałek</option>
+      <option value="tuesday">Wtorek</option>
+      <option value="wednesday">Środa</option>
+      <option value="thursday">Czwartek</option>
+      <option value="friday">Piątek</option>
+      <option value="saturday">Sobota</option>
+      <option value="sunday">Niedziela</option>
+        </select>
+            </div>
+        </div>
+
+        <div class="row" id="mainContentBox">
+            <div class="col-md-7 clearfix">
+                <div id="tasksTofinish">
+                    Ilość zadań: <span id="counter">0</span>
+                    <button type="button" class="btn btn-default btn-xs" title="Drukuj wszystkie zadania z tego dnia" id="printTasks">
+                    <span class="glyphicon glyphicon-print"></span>
+                    </button>
+                </div>
+                <ul id="taskList" class="list-group custom-margin-top">
+
+                </ul>
+                <button type="button" class="btn btn-default btn-default pull-right" title="Usuń wszystkie zadania z tego dnia" id="removeAlltasksButton"><span class="glyphicon glyphicon-minus"></span> Usuń wszystko</button>
+
+            </div>
+
+            <div class="col-md-4 col-md-offset-1">
+                <div class="row">
+                    <section id="newTask">
+                        <h4>Dodaj nowe zadanie</h4>
+                        <form>
+                            <div class="form-group custom-margin-top">
+                                <input id="taskName" class="form-control" type="text" placeholder="Nazwa zadania">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="taskDesc" class="form-control" type="text" placeholder="Opis zadania"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-info" id="addTaskButton" title="Dodaj nowe zadanie"><span class="glyphicon glyphicon-plus"></span> Dodaj zadanie</button>
+
+                        </form>
+                    </section>
+                </div>
+            </div>
 
 
-        <section id="newTask">
-            <input id="taskName" placeholder="Place your task here"><br>
-            <input id="taskDesc" placeholder="Descr"><br>
 
-        </section>
-        <p id="tasksTofinish">Tasks to finish: <span id="counter">0</span></p>
-        <button id="addTaskButton">Add task</button>
-        <button id="removeAlltasksButton">Remove all tasks</button>
-        <button id="saveAll">Save changes</button>
+
+        </div>
+        <div class="row">
+            <div class="text-right">
+                <button class="btn btn-lg btn-success " id="saveAll" title="Aktualizowanie zadań w bazie">Zapisz zmiany</button>
+                <div class="alert alert-success custom-margin-top text-center">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times; </a> Sukces! Dane zostały poprawnie zapisane w bazie danych.
+                </div>
+            </div>
+        </div>
+        <footer class="row text-center">
+            <div class="col-md-12">
+                <p>Autor: <a href="https://www.linkedin.com/in/danielkornas" title="Moj LinkedIn" target="_blank">Daniel Kornas</a>. Informacja o projekcie: <a href="https://github.com/DanielKornas/To-Do-List" title="Kod strony na Github" target="_blank">Github</a>. Wykorzystano <a href="http://glyphicons.com/" target="_blank">Glyphicons</a>.</p>
+            </div>
+        </footer>
     </div>
+
+
 
     <script src=" js/app.js"></script>
 

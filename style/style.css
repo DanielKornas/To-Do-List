@@ -1,0 +1,124 @@
+/*zmiana ustawien bootstrapa */
+.btn-default {
+    color:#C1385C;
+    border-color: #C1385C ;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+    color: #fff;
+    background-color: #C1385C;
+    border-color: #fff;
+}
+.btn-info {
+    color:#00072D;
+    background-color:#fff;
+    border-color: #A8DADC ;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open>.dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: #A8DADC;
+    border-color: #fff;
+}
+.btn-success {
+    background-color:#119B7D;
+    border-color: #A8DADC ;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open>.dropdown-toggle.btn-success{
+    background-color: #A8DADC;
+    color: #fff;
+    border-color:#fff;
+}
+
+h1{
+    font-family: 'Coiny', cursive;
+    color:#00072D;
+    font-size:45px;
+}
+a:hover, a:active{
+    text-decoration:none;
+
+}
+.color-1{
+    color:#119B7D;
+}
+.color-2{
+    color:#C1385C;
+}
+.custom-margin-top{
+    margin-top:20px;
+}
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+    #daysList{
+        visibility: visible;
+    }
+    #taskList * {
+        visibility: visible;
+    }
+    #taskList button{
+        visibility: hidden;
+    }
+    #taskList span{
+        visibility: hidden;
+    }
+}
+
+#tasksTofinish {
+    font-size: 18px;
+
+}
+
+#tasksTofinish #counter {
+    color: #C1385C;
+    font-size: 20px;
+    font-weight: bold;
+}
+#tasksTofinish button{
+    margin:0 0 5px 2px;
+}
+
+
+#taskList li {
+    padding-top: 0px;
+}
+
+#taskList h3 {
+    margin-top: 5px;
+    color: #A8DADC;
+}
+
+#taskList h4 {
+    font-weight: normal;
+    font-size: 13px;
+}
+
+#daysList {
+    text-align-last: center;
+    /* to override text-align: left; */
+}
+
+div.startView {
+    margin-top: 10%;
+
+}
+
+
+#mainContentBox {
+    margin-top: 5%;
+    display:none;``
+}
+
+#saveAll{
+    display:none;
+}
+div.alert-success{
+    display:none;
+
+}
+footer{
+    color:#C1385C;
+    margin-top:200px;
+
+}

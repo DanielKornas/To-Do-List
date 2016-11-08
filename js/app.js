@@ -3,7 +3,8 @@ $(function() {
     var taskName = $('#taskName');
     var taskNameval, taskDescval, selectedDay, taskListallLi, itemId;
     var taskDesc = $('#taskDesc');
-    var infoBox = $('#infoBox')
+    var mainContentBox = $('#mainContentBox')
+    var printTasks = mainContentBox.find('#printTasks');
     var addTaskButton = $('#addTaskButton');
     var taskList = $('#taskList');
     var daysList = $('#daysList');
@@ -12,6 +13,8 @@ $(function() {
     var tasksTofinish = $('#tasksTofinish');
     var counter = tasksTofinish.find('#counter');
     var saveAll = $('#saveAll');
+    var alertSuccessbox = $('.alert-success');
+    var startView = $('.startView')
 
     function loadData() {
         firebase
@@ -48,12 +51,13 @@ $(function() {
 
 
     loadData();
-    infoBox.hide();
     // counter.html("0");
 
     daysList.change(function() { // event change - wybieranie dni z listy
-        infoBox.show();
+        mainContentBox.show();
+        saveAll.show();
         selectHide.hide(); // po wybraniu jakiegos dnia ukrycie buttona Wybierz dzien...
+        startView.removeClass('startView');
         selectedDay = daysList.find('option:selected').val(); // odczytanie jaki dzien zostal wybrany
         console.log(selectedDay)
         console.log(data[selectedDay])
@@ -67,13 +71,15 @@ $(function() {
             console.log(singleDay.length)
             if (singleDay[i] !== undefined) {
 
-                taskList.append($('<li data-id=' + i + '><h1>' + singleDay[i].name + '</h1><h2>' + singleDay[i].desc + '</h2><button class="delete">Delete</button></li>')).hide().slideDown(300); // li zawiera informacje!!
+                taskList.append($('<li data-id=' + i + ' class="list-group-item clearfix"><h3>' + singleDay[i].name + '</h3><h4>' + singleDay[i].desc + '</h4><button type="button" class="btn btn-default btn-sm pull-right" title="Usuń to zadanie"><span class="glyphicon glyphicon-minus"></span> Usuń</button></li>')).hide().slideDown(300); // li zawiera informacje!!
 
             }
         }
         counter.html(taskList.children().length);
 
-
+        printTasks.on("click", function(){
+            window.print();
+        })
 
     });
 
@@ -81,13 +87,13 @@ $(function() {
     addTaskButton.on("click", function(event) {
 
         event.preventDefault();
-        var newTask = $("<li>"); // nowy element li
+        var newTask = $('<li class="list-group-item clearfix">'); // nowy element li
         // przykladowy warunek
         if (taskName.val().length > 5 && taskName.val().length < 100) {
             taskNameval = taskName.val();
             taskDescval = taskDesc.val();
 
-            newTask.html('<h1>' + taskNameval + '</h1><h2>' + taskDescval + '</h2><button class="delete">Delete</button>');
+            newTask.html('<h3>' + taskNameval + '</h3><h4>' + taskDescval + '</h4><button type="button" class="btn btn-default btn-sm pull-right" title="Usuń to zadanie"><span class="glyphicon glyphicon-minus"></span> Usuń</button>');
             taskList.append(newTask); // dodajemy li do ul - kazde kolejne li bedzie ponizej
 
             taskName.val(""); // resetowanie inputa po dodaniu - wyczyszczenie jego tresci
@@ -115,6 +121,10 @@ $(function() {
 
     saveAll.on("click", function() {
         console.log("zapisuje")
+        alertSuccessbox.show(); // pokazanie informacji o sukcesie wyslania danych
+        alertSuccessbox.find('.close').click(function() { // event na kliknieciu X
+            alertSuccessbox.hide(); // ukrycie calego boxa
+        });
         saveData();
     })
 
