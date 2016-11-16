@@ -12,6 +12,8 @@ jQuery, JS, Bootstrap, HTML5, CSS3, Firebase.
 * Przyjemne dla oka animacje CSS wzbogacające projekt
 
 # Instalacja
-Skonfiguruj projekt w Firebase. Zapraszam do testowania aplikacji korzystając z mojej konfiguracji.
+1. Utwórz projekt w Firebase i zaktualizuj kod w index.html
+2. Dla ułatwienia wczytaj JSON z kilkoma przykładowymi zadaniami - http://bit.ly/2fUU9K4
 
+Zapraszam do testowania aplikacji korzystając z mojej konfiguracji.
 Demo: https://danielkornas.github.io/To-Do-List/
