@@ -16,4 +16,5 @@ jQuery, JS, Bootstrap, HTML5, CSS3, Firebase.
 2. Dla ułatwienia wczytaj JSON z kilkoma przykładowymi zadaniami - http://bit.ly/2fUU9K4
 
 Zapraszam do testowania aplikacji korzystając z mojej konfiguracji.
-Demo: https://danielkornas.github.io/To-Do-List/
+
+##Demo: https://danielkornas.github.io/To-Do-List/
