@@ -77,6 +77,15 @@ a:hover, a:active {
     }
 }
 
+div.startView {
+    margin-top: 10%;
+}
+
+#mainContentBox {
+    margin-top: 5%;
+    display: none;
+}
+
 #tasksTofinish {
     font-size: 18px;
 }
@@ -89,6 +98,10 @@ a:hover, a:active {
 
 #tasksTofinish button {
     margin: 0 0 5px 2px;
+}
+
+#mainContentBox span#allBox{
+    font-size:12px;
 }
 
 #taskList li {
@@ -107,17 +120,9 @@ a:hover, a:active {
 
 #daysList {
     text-align-last: center;
-    /* to override text-align: left; */
+    /* wycentrowanie selectow */
 }
 
-div.startView {
-    margin-top: 10%;
-}
-
-#mainContentBox {
-    margin-top: 5%;
-    display: none;
-}
 
 #saveAll {
     display: none;
